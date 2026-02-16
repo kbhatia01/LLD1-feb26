@@ -1,9 +1,6 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-
-void x(){
-
-}
+import java.util.concurrent.ExecutorService;
 void main() {
 
     Student s = new Student("karan", 10);
@@ -22,11 +19,17 @@ void main() {
 //    System.out.println(e2.s.name);
 //
 
+//    for (int i = 0; i < 100000; i++) {
+//        Thread t1 = new Thread(new threading(i));
+//        t1.start();
+//
+//    }
+
+//    ExecutorService es = Executors.newCachedThreadPool();
+    ExecutorService es = Executors.newFixedThreadPool(5);
     for (int i = 0; i < 100000; i++) {
-        Thread t1 = new Thread(new threading(i));
-        t1.start();
-
+        ThreadingPool t1 = new ThreadingPool(i);
+        es.submit(t1);
     }
-
 
 }
