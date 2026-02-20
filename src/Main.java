@@ -1,7 +1,10 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 import java.util.concurrent.ExecutorService;
-void main() {
+
+
+
+void main() throws ExecutionException, InterruptedException {
 
     Student s = new Student("karan", 10);
 //
@@ -26,10 +29,18 @@ void main() {
 //    }
 
 //    ExecutorService es = Executors.newCachedThreadPool();
-    ExecutorService es = Executors.newFixedThreadPool(5);
-    for (int i = 0; i < 100000; i++) {
+    ExecutorService es = Executors.newFixedThreadPool(99);
+    Future<Integer>[] fsa = new Future[100];
+    for (int i = 0; i < 100; i++) {
         ThreadingPool t1 = new ThreadingPool(i);
-        es.submit(t1);
+        Future<Integer> fs = es.submit(t1);
+        fsa[i]=fs;
     }
+    Thread.sleep(1);
+    for (int i = 0; i < 100; i++) {
+        System.out.println(fsa[i].get());
+    }
+
+
 
 }

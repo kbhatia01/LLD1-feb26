@@ -1,4 +1,6 @@
-public class ThreadingPool implements Runnable{
+import java.util.concurrent.Callable;
+
+public class ThreadingPool implements Callable<Integer> {
     public int num_to_print;
 
     ThreadingPool(int p){
@@ -6,17 +8,15 @@ public class ThreadingPool implements Runnable{
     }
 
     void print_num() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(10000);
         System.out.println(Thread.currentThread().getName() + "- " + num_to_print);
     }
 
     @Override
-    public void run() {
-        try {
-            print_num();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+    public Integer call() throws InterruptedException {
+        Thread.sleep(1000);
+
+        return num_to_print;
     }
 
 }
