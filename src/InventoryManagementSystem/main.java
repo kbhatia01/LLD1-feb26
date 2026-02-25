@@ -15,10 +15,14 @@ public class main {
         a.add(a2);
         a.add(a3);
         a.add(a4);
+        NameComparator na = new NameComparator();
         Collections.sort(a);
         for (int i = 0; i < a.size(); i++) {
             System.out.println(a.get(i).getPrice());
 
         }
     }
+
+    Inventory<clothes> iclothes =  new Inventory<>();
+
 }
