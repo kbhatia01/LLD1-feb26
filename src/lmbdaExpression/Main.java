@@ -12,10 +12,15 @@ public class Main {
 
 //        Intermidiate: lazy methods..
 //        Terminals: evaluate lazy loading
-        List<Integer> evens = s.filter((x)-> x%2==0)
-                .sorted().collect(Collectors.toList());
-        
-        System.out.println(evens);
+//        List<Integer> evens = s.filter((x)-> x%2==0)
+//                .map((x)-> x*x)
+//                .sorted().distinct().collect(Collectors.toList());
+
+        Test t = new Test();
+       s.filter((x)-> x%2==0)
+                .map((x)-> x*x)
+                .sorted().distinct().forEach(System.out::println);
+
 
     }
 }
